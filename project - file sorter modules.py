@@ -3,8 +3,9 @@
 
 def identify_mp3():
     import os
-    path = "C:\\Users\\Admin\\PycharmProjects\\pycharmtest"  # path of folder mp3 files download into
-    path = "C:\\Users\\harve\\Documents\\NEW_qa_coding\\project_music_sort-\\music"
+    #path = "C:\\Users\\Admin\\PycharmProjects\\pycharmtest"  # path of folder mp3 files download into
+    path = "C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey._assessment\\music"
+    #path = "C:\\Users\\harve\\Documents\\NEW_qa_coding\\project_music_sort-\\music"
     # remember formatting with "C:\\Users\\Admin\\blahblah\\blah" with double \ (\\)
     for file in os.listdir(path):  # Goes through files checking for .mp3/.wav/.flac files
         if file.endswith(".mp3") or file.endswith(".flac") or file.endswith(".wav"):
@@ -61,12 +62,12 @@ class Music(ABC):
             pass
 
 """I have no idea what this does change me"""
-class id3tags(file_info):
-    tags = { "title": ( 3, 33, stripnulls),
-             "artist": (33, 63, stripnulls),
-             "albums": (63, 93, stripnulls),
-             "year": (93, 97, stripnulls),
-             "comment": (97, 126, stripnulls),
-             "genre": (127,128,ord)}
+#class id3tags(file_info):
+#    tags = { "title": ( 3, 33, stripnulls),
+#             "artist": (33, 63, stripnulls),
+#             "albums": (63, 93, stripnulls),
+#             "year": (93, 97, stripnulls),
+#             "comment": (97, 126, stripnulls),
+#            "genre": (127,128,ord)}
 
 
