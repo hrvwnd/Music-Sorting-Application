@@ -1,0 +1,17 @@
+create database musicsorting
+use bankingapp;
+
+create table sorting_tracks
+track_id int (8) not null auto_increment,
+title varchar(40) not null,
+album varchar (50) not null,
+artist varchar (30) not null );
+
+
+create table banking_funds(
+funds_id int (4) not null auto_increment,
+funds_amount decimal(5,2) default 0.00
+fk_customer_id int(4) not null
+unique (funds_id)
+primary key (funds_id)
+foreign key (fk_customer_id) references banking_customers (customer_id) );
