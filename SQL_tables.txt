@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 create database musicsort
 use music sort;
 
@@ -10,12 +11,29 @@ emailaddress varchar(50) not null,
 password varchar(20) not null,
 unique (customer_id),
 primary key (customer_id) );
+=======
+create database musicsorting
+use bankingapp;
+
+create table sorting_tracks
+track_id int (8) not null auto_increment,
+title varchar(40) not null,
+album varchar (50) not null,
+artist varchar (30) not null );
+>>>>>>> 37b17fad8850417cb8f8700c12e718c2b7e3e372
 
 
 create table banking_funds(
 funds_id int (4) not null auto_increment,
+<<<<<<< HEAD
 funds_amount decimal(5,2) default 0.00,
 fk_customer_id int(4) not null,
 unique (funds_id),
 primary key (funds_id),
+=======
+funds_amount decimal(5,2) default 0.00
+fk_customer_id int(4) not null
+unique (funds_id)
+primary key (funds_id)
+>>>>>>> 37b17fad8850417cb8f8700c12e718c2b7e3e372
 foreign key (fk_customer_id) references banking_customers (customer_id) );
