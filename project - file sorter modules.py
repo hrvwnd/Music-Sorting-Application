@@ -33,7 +33,8 @@ def identify_mp3():
 def folder_identify():
     import os  # needed to navigate directories
     path = "C:\\Users\\Admin\\PycharmProjects\\pycharmtest"  # path of folder mp3 files download into
-    check_folder = "Rock"
+    path = "C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey._assessment\\music"
+    check_folder = "liquid"
     path_and_folder = double_backslash(path,check_folder)
     print(os.path.isdir(path_and_folder))
 
@@ -60,6 +61,8 @@ class Music(ABC):
             pass
         def comments(self):
             pass
+
+
 
 """I have no idea what this does change me"""
 #class id3tags(file_info):

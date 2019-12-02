@@ -1,0 +1,95 @@
+create database gamedb;
+use gamedb;
+create table game_customers(
+customer_id int (4) not null auto_increment,
+firstname varchar(20) not null,
+lastname varchar(20) not null,
+address varchar (50) not null,
+emailaddress varchar(50) not null,
+password varchar(20) not null,
+primary key(customer_id) );
+
+create table game_games(
+game_id int (4) not null auto_increment,
+game_name varchar(50) not null,
+game_quantity int default '0',
+game_rating varchar (2) not null,
+game_price decimal (4,2) not null,
+primary key(game_id) );
+
+create table game_orders(
+order_id int (4) not null auto_increment,
+fk_customer_id int (4) not null,
+fk_game_id int (4) not null,
+unique (order_id),
+primary key(order_id),
+foreign key (fk_customer_id) references game_customers (customer_id),
+foreign key (fk_game_id) references game_games (game_id) );
+
+
+insert into game_customers (firstname,lastname,address,emailaddress,password)
+values ('Bill', 'Billson', 'Billborough lane' , 'billsbilling@email.com','billspassword');
+
+insert into game_games (game_name, game_quantity,game_rating,game_price)
+values ('tetris', '12', '3', '10.00');
+
+alter table game_orders add total decimal(4,2);
+
+insert into game_orders (fk_customer_id,fk_game_id,date_placed)
+values ('1','1', '2000-01-01')
+
+alter table game_customers add age int;
+alter table game_customers add postcode varchar(8);
+update game_customers set age=22, postcode = 'BILL1AA' 
+
+values ('James', 'Jimmy' , 'somewhere in bristol' ,'Jimmeh@email.com','8oclock','23','JIM2AA')
+
+update game_customer set postcode = BILL1AA where firstname = 'bill'
+
+insert into game_customers (firstname,lastname,address,emailaddress,psssword,age,postcode)
+
+
+
+World Exercises:
+
+COUNT:
+Q1:
+select count(*) from [table name] where [column name] = '[name]';
+Q2:
+select [conditions,conditions] from [table] where [colomn name] = '[thing]' 
+Not any question 
+select [column], max([column]) as Name the Column from [table] group by [column];
+select [lifeexpectancy], max([lifeexpectancy]) as LE from [country] group by [Name];
+Q3:
+select Name, LifeExpectancy from country where LifeExpectancy is not null order by LifeExpectancy DESC limit 1;
+Q4
+#select cit.countrycode, Name, 
+
+select city.name, country.code 
+from country left join city on country.code =city.countrycode 
+where city.ID = country.capital and country.code ='ESP';
+Q5
+#select countrylanguage.language, country.code
+#from country left join countrylanguage on country.code = countrylanuage.countrycode
+#where countrylanguage.countrycode = country.id and country.region = 'Southeast Asia';
+
+select co.name, cl.language, region 
+from country co left join countrylanguage cl 
+on co.code=cl.countryCode where region='southeast asia';
+
+select co.name, cl.language, co.region
+from country co left join countrylanguage cl
+on co.code=cl.countrycode where region ='Europe';
+
+Q6
+select * from city where name like 'F%';
+SELECT * FROM tableName WHERE CompanyName LIKE 'Em%' or CompanyName LIKE '% Em%'
+
+Q7
+select count(*) from city
+where name = 'China'; 
+
+select count(*) from [City] 
+where [Name] = 'CHN';
+
+
