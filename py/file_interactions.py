@@ -36,11 +36,9 @@ def folder_identify(path,check_folder):
     #check_folder = "liquid"
     path_and_folder = double_backslash(path,check_folder) #uses function to avoid python \ problems
     print(os.path.isdir(path_and_folder))
-    return (os.path.isdir(path_and_folder)
-
-
+    return (os.path.isdir(path_and_folder))
+    
 #Adds \\ between path and desired folder 
-def double_backslash(path,folder):
 def double_backslash(path,folder):
     path_and_folder = path + "\\" + folder
     print (path_and_folder)
