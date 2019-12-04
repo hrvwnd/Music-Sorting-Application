@@ -13,7 +13,7 @@ connection = connect(
 def write():
     try:
         with connection.cursor() as cursor:
-            query = 'insert into..."
+            query = "insert into"
             cursor.execute(query)
         connection.commit()
     finally:

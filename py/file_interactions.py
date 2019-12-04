@@ -1,5 +1,6 @@
 """Project Ideas for Code"""
 import os
+import shutil
 
 def identify_mp3():
     #path = "C:\\Users\\Admin\\PycharmProjects\\pycharmtest"  # path of folder mp3 files download into
@@ -28,23 +29,25 @@ def identify_mp3():
                 print("file: ", file)
                 thisshouldalsodosomething = "change this"
 
-
-def folder_identify():
+#given a path and a folder; function checks for existance in directory path
+def folder_identify(path,check_folder): 
     path = "C:\\Users\\Admin\\PycharmProjects\\pycharmtest"  # path of folder mp3 files download into
     path = "C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey._assessment\\music"
-    check_folder = "liquid"
-    path_and_folder = double_backslash(path,check_folder)
+    #check_folder = "liquid"
+    path_and_folder = double_backslash(path,check_folder) #uses function to avoid python \ problems
     print(os.path.isdir(path_and_folder))
     return (os.path.isdir(path_and_folder)
 
 
+#Adds \\ between path and desired folder 
+def double_backslash(path,folder):
 def double_backslash(path,folder):
     path_and_folder = path + "\\" + folder
     print (path_and_folder)
     return path_and_folder
 
 
-folder_identify()  # testing function
+#folder_identify()  # testing function
 
 
 
@@ -97,3 +100,24 @@ def doubleslash_checker(file_path):
 def dircheck():
     dircheck = input("insert directory")
     print (doubleslash_checker(dircheck))
+
+def move_files():
+    path1 = "C:\\Users\\harve\\Documents\\qacoding\\harvey._assessment\\music\\liquid.mp3"
+    #path1 = "C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey._assessment\\music\\liquid.mp3"
+    #path2 = "C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey._assessment\\music\\liquid\\liquid.mp3"
+    path2 = "C:\\Users\\harve\\Documents\\qacoding\\harvey._assessment\\music\\liquid\\liquid.mp3"
+    #src = "/C:/Users/harve/Documents/NEW_qa_coding/project_music_sort-/music/liquid.mp3"
+    #dst = "/C:/Users/harve/Documents/NEW_qa_coding/project_music_sort-/music/liquid/liquid.mp3"
+    #path1 = "\\music\\liquid.mp3"
+    #path2 = "\\music\\liquid\\liquid.mp3"
+    #path1 = "C:\\Users\\Admin\\Desktop\\try_to_use git\\project_music_sort\\music\\liquid.mp3"
+    #path2 = "C:\\Users\\Admin\\Desktop\\try_to_use git\\project_music_sort\\music\\liquid"
+    try:
+        os.rename(path1, path2)
+    except FileNotFoundError:
+        print ("Error: Check file directories are correct: \n", path1, "\n", path2)
+    try:
+        shutil.move(path1,path2)
+    except FileNotFoundError:
+        print ("Error: Check file directories are correct: \n", path1, "\n", path2)
+move_files()
