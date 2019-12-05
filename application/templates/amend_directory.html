@@ -20,6 +20,24 @@
         {{ form.genre_name }}
         {% endif %}
     </div>
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.folder_path.label }}
+            {% if form.folder_path.errors %}
+            {{ form.folder_path }}
+            <div class="error">
+                {% for error in form.folder_path.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ form.folder_path }}
+            {% endif %}
+        </div>
+
+
     <div class= "form-group">
         {{ form.submit }}
     </div>
