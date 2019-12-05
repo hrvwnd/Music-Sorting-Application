@@ -47,12 +47,14 @@ class RegistrationForm(FlaskForm):
             ]
     )
 
-    email = StringField('Email:        ',validators=[
+    email = StringField('Email:        ',
+    validators=[
         DataRequired(),
         Email()
         ]
         )
-    password = PasswordField('Password:     ',validators=[
+    password = PasswordField('Password:     ',
+    validators=[
         DataRequired()
         ]
         )
@@ -123,7 +125,8 @@ class DirectoryForm(FlaskForm): #user enters directory path
     validators = [
         DataRequired(),
         Length(min=2, max = 150) 
-    ])
+    ]
+    )
     submit = SubmitField ('Submit')
 
     def validate_directory_path(self,directory_path):
@@ -142,7 +145,7 @@ class GenreForm(FlaskForm): #allows user to enter genre name
         Length(min=2, max = 20)
             ]
         )
-    submit = SubmitField('Add Genre')
+    submit = SubmitField('Add Genre') #button to submit data
     
     def validate_genre_name(self,genre_name):
         in_use = Genres.query.filter_by(genre_name=genre_name.data).first()
