@@ -98,7 +98,7 @@ def doubleslash_checker(file_path):
 def dircheck():
     dircheck = input("insert directory")
     print (doubleslash_checker(dircheck))
-
+dircheck()
 def move_files():
     path1 = "C:\\Users\\harve\\Documents\\qacoding\\harvey._assessment\\music\\liquid.mp3"
     #path1 = "C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey._assessment\\music\\liquid.mp3"
