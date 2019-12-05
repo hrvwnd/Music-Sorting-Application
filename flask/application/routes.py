@@ -109,6 +109,13 @@ def sort():
 
 @app.route('/amend_directory', methods = ['GET','POST']
 def amend_directory():
+    form=AmendDirectoryForm()
+    if form.validate_on_submit():
+        genre = form.genre_name.data
+        db.session.add(genre)
+        db.session.commit()
+    return redirect(url_for('amend_directory'))
+
     continue
 
 @app.route('manual_sort', methods = ['GET','POST']

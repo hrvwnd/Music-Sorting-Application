@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+{% extends 'layout.html' %}
+{% block body_content %}
+<h1>Amend database Page</h1>
+<h2>Want to add a genre?</h2>
+<div class = "form">
+    <form method="post" action="">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.genre_name.label }}
+        {% if form.genre_name.errors %}
+        {{ form.genre_name }}
+        <div class="error">
+            {% for error in form.genre_name.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.email }}
+        {% endif %}
+    </div>
+</form>
+</div>
