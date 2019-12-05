@@ -3,4 +3,6 @@ music/
 SQL_tables.txt  
 /venv
 /.vscode 
-
+/venv/
+/__pycache__/
+/application/__pycache__/
