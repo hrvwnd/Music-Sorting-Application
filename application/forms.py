@@ -10,7 +10,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo,ValidationError
 from application.models import Tracks, Artists, Genres
-from application.file_interactions import double_backslash, folder_itentify
+import application.py
 from application.__init__ import LoginManager
 from flask_login import LoginManager, current_user
 
@@ -152,7 +152,8 @@ class GenreForm(FlaskForm): #allows user to enter genre name
     def validate_genre_name(self,genre_name):
         in_use = Genres.query.filter_by(name=genre_name.data).first()
         if in_use:
-            raise ValidationError('Genre Already exists')
+            raise ValidationError("Genre Already exists")
     def validate_folder_path(self,folder_path):
-        in use = 
-
+        in_use =  application.py.file_interactions.folder_identify_lx("harvey/music" + str(genre_name))
+        if in_use:
+            raise ValidationError("Directory already exists")
