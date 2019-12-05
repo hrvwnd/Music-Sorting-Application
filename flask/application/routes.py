@@ -107,7 +107,7 @@ def account():
 def sort():
     continue
 
-@app.route('/amend_directory', methods = ['GET','POST']
+@app.route('/amend_directory', methods = ['GET','POST'])
 def amend_directory():
     form=AmendDirectoryForm()
     if form.validate_on_submit():
