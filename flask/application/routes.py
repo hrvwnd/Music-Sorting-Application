@@ -6,7 +6,7 @@ from flask_login import login_user,current_user, logout_user, login_required
 """ Project imports """
 from flask import render_template, redirect, url_for, request
 from application import app, db, bcrypt
-from application.models import Posts, Users
+from application.models import Artists, Tracks, Genres
 from application.forms import DirectoryForm, GenreForm 
 from flask_login import login_user,current_user, logout_user, login_required
 
