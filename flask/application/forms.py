@@ -142,6 +142,7 @@ class GenreForm(FlaskForm): #allows user to enter genre name
         Length(min=2, max = 20)
             ]
         )
+    submit = SubmitField('Add Genre')
     
     def validate_genre_name(self,genre_name):
         in_use = Genres.query.filter_by(genre_name=genre_name.data).first()

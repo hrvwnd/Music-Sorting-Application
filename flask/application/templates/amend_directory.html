@@ -5,7 +5,7 @@
 <h1>Amend database Page</h1>
 <h2>Want to add a genre?</h2>
 <div class = "form">
-    <form method="post" action="">
+    <form method="POST" action="">
     {{ form.hidden_tag() }}
     <div class="form-group">
         {{ form.genre_name.label }}
@@ -17,7 +17,7 @@
             {% endfor %}
         </div>
         {% else %}
-        {{ form.email }}
+        {{ form.genre_name }}
         {% endif %}
     </div>
 </form>

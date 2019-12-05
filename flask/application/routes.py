@@ -117,8 +117,8 @@ def sort():
 def amend_directory():
     form = GenreForm()
     if form.validate_on_submit():
-        genre = form.genre_name.data
-        db.session.add(genre)
+        genre_name = form.genre_name.data
+        db.session.add(genre_name)
         db.session.commit()
         return redirect(url_for('amend_directory'))
     return render_template('amend_directory',title="Amend Stuff", form=form)
