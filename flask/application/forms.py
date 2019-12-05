@@ -124,7 +124,7 @@ class DirectoryForm(FlaskForm): #user enters directory path
         DataRequired(),
         Length(min=2, max = 150) 
     ])
-submit = SubmitField ('Submit')
+    submit = SubmitField ('Submit')
 
     def validate_directory_path(self,directory_path):
         #change me <-- add directory check code 

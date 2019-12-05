@@ -118,7 +118,7 @@ def amend_directory():
 
     continue
 
-@app.route('manual_sort', methods = ['GET','POST']
+@app.route('manual_sort', methods = ['GET','POST'])
 def manual_sot():
     continue 
 
