@@ -146,7 +146,7 @@ class GenreForm(FlaskForm): #allows user to enter genre name
         Length(min=2, max = 20)
             ]
         )
-    folder_path = "harvey/music/"+str(genre_name)
+    folder_path = StringField("Folder Path: ", default="harvey/music/"+str(genre_name))
     submit = SubmitField('Add Genre') #button to submit data
     
     def validate_genre_name(self,genre_name):
