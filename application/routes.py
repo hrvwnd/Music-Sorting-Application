@@ -119,7 +119,7 @@ def amend_directory():
     if form.validate_on_submit():
         new_genre = Genres(
             name = form.genre_name.data,
-            folder_path = form.folder_path.data
+            folder_path = form.folder_path.data+form.genre_name.data
         )
         db.session.add(new_genre)
         db.session.add
