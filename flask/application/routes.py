@@ -117,7 +117,7 @@ def amend_directory():
     return redirect(url_for('amend_directory'))
 
     
-@app.route('manual_sort', methods = ['GET','POST'])
+@app.route('/manual_sort', methods = ['GET','POST'])
 def manual_sot():
     pass
 
