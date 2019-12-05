@@ -121,7 +121,7 @@ def amend_directory():
         db.session.add(genre_name)
         db.session.commit()
         return redirect(url_for('amend_directory'))
-    return render_template('amend_directory',title="Amend Stuff", form=form)
+    return render_template("amend_directory.html",title="Amend Stuff", form=form)
 
     
 @app.route('/manual_sort', methods = ['GET','POST'])
