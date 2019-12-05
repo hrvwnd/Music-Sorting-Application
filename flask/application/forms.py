@@ -148,7 +148,7 @@ class GenreForm(FlaskForm): #allows user to enter genre name
     submit = SubmitField('Add Genre') #button to submit data
     
     def validate_genre_name(self,genre_name):
-        in_use = Genres.query.filter_by(genre_name=genre_name.data).first()
+        in_use = Genres.query.filter_by(name=genre_name.data).first()
         if in_use:
             raise ValidationError('Genre Already exists')
 
