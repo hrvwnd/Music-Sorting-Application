@@ -51,7 +51,7 @@ def double_backslash(path,folder):
 
 
 def folder_check():
-    sub_genres = ["liquid","hiphop"]#,"neurofunk","trance"",hardstyle","hardcore","frenchcore","dubstep","rock"]
+    sub_genres = ["liquid","hiphop"]#,"neurofunk","trance","hardstyle","dubstep","rock"]
     #user_directory = input ("Enter your desired folder directory: ")
     #directory_name= "C:\\Users\\harve\\Documents\\NEW_qa_coding\\project_music_sort-\\music\\liquid"
     #directory_name = "\\Users\\Admin\\Desktop\\try to use git\\project_music_sort\\music"
@@ -98,7 +98,7 @@ def doubleslash_checker(file_path):
 def dircheck():
     dircheck = input("insert directory")
     print (doubleslash_checker(dircheck))
-dircheck()
+#dircheck()
 def move_files():
     path1 = "C:\\Users\\harve\\Documents\\qacoding\\harvey._assessment\\music\\liquid.mp3"
     #path1 = "C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey._assessment\\music\\liquid.mp3"
