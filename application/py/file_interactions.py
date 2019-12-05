@@ -57,24 +57,20 @@ def folder_identify_lx(path,check_folder):
     return (os.path.isdir(path_and_folder))
 
 
-def folder_check():
+#Search inside directory for specified folder
+#if found; checks for subgenre folders
+#if any folder is not found, it is created 
+def folder_check(directory_path):
     sub_genres = ["liquid","hiphop"]#,"neurofunk","trance","hardstyle","dubstep","rock"]
-    #user_directory = input ("Enter your desired folder directory: ")
-    #directory_name= "C:\\Users\\harve\\Documents\\NEW_qa_coding\\project_music_sort-\\music\\liquid"
-    #directory_name = "\\Users\\Admin\\Desktop\\try to use git\\project_music_sort\\music"
-    directory_name = "C:\\Users\\harve\\Documents\\NEW_qa_coding\\harvey\\music"
-    directory_name = "C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey\\music"
     masterdir_created = ""
     masterdir_exists = ""
     dir_created = ""
     dir_exists = ""
+    
     try: # attempt to make a directory in desired locaiton
         os.mkdir(directory_name)
-        #print("Master Directory "+ directory_name+ " created")
-
     except FileExistsError: # if directory already exists it catchs exception and informs user 
         masterdir_exists += "MASTER Directory: music "
-        #print("Master Directory "+ directory_name+ " already exists")
     else:
         masterdir_created += "MASTER Directory: music"
     
@@ -96,6 +92,38 @@ def folder_check():
     if dir_exists != "":
         print ("Pre-existing Genre folders: ")
         print (dir_exists) 
+
+
+#linux version of Folder check
+def folder_check_lx(directory_path):
+    sub_genres = ["liquid","hiphop"]#,"neurofunk","trance","hardstyle","dubstep","rock"]
+    masterdir_created = ""
+    masterdir_exists = ""
+    dir_created = ""
+    dir_exists = ""
+    
+    try: # attempt to make a directory in desired locaiton
+        os.mkdir(directory_name)
+    except FileExistsError: # if directory already exists it catchs exception and informs user 
+        masterdir_exists += "MASTER Directory: music "
+    else:
+        masterdir_created += "MASTER Directory: music"
+    
+    for item in sub_genres:
+        path_and_folder = double_backslash_lx(directory_name,item)
+        try:            
+            os.mkdir(path_and_folder)
+            dir_created += item + "\n"
+        except FileExistsError:
+            #print ("File exists")
+            dir_exists += item + "\n"
+    if masterdir_created != "":
+        return masterdir_created, dir_created
+    else:
+        if dir_created != "":
+            return masterdir_exists, dir_created
+        else:
+            return masterdir_exists, dir_exists
 
 
 # To avoid python \ problems this function searchs for \\ and returns \\\\
