@@ -128,9 +128,11 @@ class DirectoryForm(FlaskForm): #user enters directory path
 
     def validate_directory_path(self,directory_path):
         #change me <-- add directory check code 
+        path = True
         if path:
             ValidationError("Path exists")
         if path == False:
+            pass
             #change me <-- add make a directory function
 
 class GenreForm(FlaskForm): #allows user to enter genre name
@@ -138,13 +140,11 @@ class GenreForm(FlaskForm): #allows user to enter genre name
     validators = [
         DataRequired(),
         Length(min=2, max = 20)
+            ]
+        )
     
     def validate_genre_name(self,genre_name):
-        in_use = Genres.query.filter_by(genre_name=name.data).first()
+        in_use = Genres.query.filter_by(genre_name=genre_name.data).first()
         if in_use:
             raise ValidationError('Genre Already exists')
 
-        user = Users.query.filter_by(email=email.data).first()
-        if user:
-            raise ValidationError('Email is already in use!')
-    

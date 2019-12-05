@@ -105,7 +105,7 @@ def account():
 """  ~~~Project Routes~~~   """
 @app.route('/sort', methods = ['GET','POST'])
 def sort():
-    continue
+    pass
 
 @app.route('/amend_directory', methods = ['GET','POST'])
 def amend_directory():
@@ -116,9 +116,8 @@ def amend_directory():
         db.session.commit()
     return redirect(url_for('amend_directory'))
 
-    continue
-
+    
 @app.route('manual_sort', methods = ['GET','POST'])
 def manual_sot():
-    continue 
+    pass
 
