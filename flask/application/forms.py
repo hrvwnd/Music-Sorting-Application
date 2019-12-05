@@ -5,6 +5,15 @@ from application.models import Users
 from application.__init__ import LoginManager
 from flask_login import LoginManager, current_user
 
+"""project imports"""
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms.validators import DataRequired, Length, Email, EqualTo,ValidationError
+from application.models import Tracks, Artists, Genres
+from application.__init__ import LoginManager
+from flask_login import LoginManager, current_user
+
+
 class PostForm(FlaskForm):
     title = StringField('Title',
             validators = [
@@ -129,4 +138,13 @@ class GenreForm(FlaskForm): #allows user to enter genre name
     validators = [
         DataRequired(),
         Length(min=2, max = 20)
+    
+    def validate_genre_name(self,genre_name):
+        in_use = Genres.query.filter_by(genre_name=name.data).first()
+        if in_use:
+            raise ValidationError('Genre Already exists')
+
+        user = Users.query.filter_by(email=email.data).first()
+        if user:
+            raise ValidationError('Email is already in use!')
     
