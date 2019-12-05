@@ -106,3 +106,27 @@ class UpdateAccountForm(FlaskForm):
             user = Users.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError("Email already in use, please try another")
+
+
+"""  Project forms   """
+class DirectoryForm(FlaskForm): #user enters directory path
+    directory_path = StringField("Enter your directory: ",
+    validators = [
+        DataRequired(),
+        Length(min=2, max = 150) 
+    ])
+submit = SubmitField ('Submit')
+
+    def validate_directory_path(self,directory_path):
+        #change me <-- add directory check code 
+        if path:
+            ValidationError("Path exists")
+        if path == False:
+            #change me <-- add make a directory function
+
+class GenreForm(FlaskForm): #allows user to enter genre name
+    genre_name = StringField("Genre name: ",
+    validators = [
+        DataRequired(),
+        Length(min=2, max = 20)
+    

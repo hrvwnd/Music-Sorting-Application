@@ -28,6 +28,12 @@ def identify_mp3():
             else:
                 print("file: ", file)
                 thisshouldalsodosomething = "change this"
+                
+#Adds \\ between path and desired folder 
+def double_backslash(path,folder):
+    path_and_folder = path + "\\" + folder
+    print (path_and_folder)
+    return path_and_folder
 
 #given a path and a folder; function checks for existance in directory path
 def folder_identify(path,check_folder): 
@@ -37,12 +43,9 @@ def folder_identify(path,check_folder):
     path_and_folder = double_backslash(path,check_folder) #uses function to avoid python \ problems
     print(os.path.isdir(path_and_folder))
     return (os.path.isdir(path_and_folder))
-    
-#Adds \\ between path and desired folder 
-def double_backslash(path,folder):
-    path_and_folder = path + "\\" + folder
-    print (path_and_folder)
-    return path_and_folder
+folder_identify("C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey\\music","liquid")
+
+
 
 
 #folder_identify()  # testing function
@@ -101,15 +104,7 @@ def dircheck():
 #dircheck()
 def move_files():
     path1 = "C:\\Users\\harve\\Documents\\qacoding\\harvey._assessment\\music\\liquid.mp3"
-    #path1 = "C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey._assessment\\music\\liquid.mp3"
-    #path2 = "C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey._assessment\\music\\liquid\\liquid.mp3"
     path2 = "C:\\Users\\harve\\Documents\\qacoding\\harvey._assessment\\music\\liquid\\liquid.mp3"
-    #src = "/C:/Users/harve/Documents/NEW_qa_coding/project_music_sort-/music/liquid.mp3"
-    #dst = "/C:/Users/harve/Documents/NEW_qa_coding/project_music_sort-/music/liquid/liquid.mp3"
-    #path1 = "\\music\\liquid.mp3"
-    #path2 = "\\music\\liquid\\liquid.mp3"
-    #path1 = "C:\\Users\\Admin\\Desktop\\try_to_use git\\project_music_sort\\music\\liquid.mp3"
-    #path2 = "C:\\Users\\Admin\\Desktop\\try_to_use git\\project_music_sort\\music\\liquid"
     try:
         os.rename(path1, path2)
     except FileNotFoundError:
@@ -118,4 +113,3 @@ def move_files():
         shutil.move(path1,path2)
     except FileNotFoundError:
         print ("Error: Check file directories are correct: \n", path1, "\n", path2)
-move_files()

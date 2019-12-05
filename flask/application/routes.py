@@ -100,3 +100,18 @@ def account():
         form.last_name.data = current_user.last_name
         form.email.data = current_user.email
     return render_template('account.html', title='Account', form=form)
+
+
+"""  ~~~Project Routes~~~   """
+@app.route('/sort', methods = ['GET','POST'])
+def sort():
+    continue
+
+@app.route('/amend_directory', methods = ['GET','POST']
+def amend_directory():
+    continue
+
+@app.route('manual_sort', methods = ['GET','POST']
+def manual_sot():
+    continue 
+
