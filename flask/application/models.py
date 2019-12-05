@@ -43,13 +43,13 @@ class Artists(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, unique = True)
     name = db.Column(db.String(100), nullable=False, unique= True)
     default_genre = db.Column(db.String(100),nullable = False, unique= True)
-    tracks = db.relationship('Tracks', backref = 'author', lazy = True)
+    tracks = db.relationship('Tracks', backref = 'artist', lazy = True)
 
 class Genres(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, unique = True)
     name = db.Column(db.String(100), nullable = False, unique = True)
     folder_path = db.Column(db.String(100), nullable = False, unique = True)
-    tracks = db.relationship('Tracks', backref = 'author', lazy = True)
+    tracks = db.relationship('Tracks', backref = 'genre', lazy = True)
 
 class Tracks(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique = True)
