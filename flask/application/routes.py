@@ -3,6 +3,12 @@ from application import app, db, bcrypt
 from application.models import Posts, Users
 from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm
 from flask_login import login_user,current_user, logout_user, login_required
+""" Project imports """
+from flask import render_template, redirect, url_for, request
+from application import app, db, bcrypt
+from application.models import Posts, Users
+from application.forms import DirectoryForm, GenreForm 
+from flask_login import login_user,current_user, logout_user, login_required
 
 
 @app.route('/')
@@ -109,12 +115,13 @@ def sort():
 
 @app.route('/amend_directory', methods = ['GET','POST'])
 def amend_directory():
-    form=AmendDirectoryForm()
+    form = GenreForm()
     if form.validate_on_submit():
         genre = form.genre_name.data
         db.session.add(genre)
         db.session.commit()
-    return redirect(url_for('amend_directory'))
+        return redirect(url_for('amend_directory'))
+    return render_template('amend_directory',title="Amend Stuff", form=form)
 
     
 @app.route('/manual_sort', methods = ['GET','POST'])
