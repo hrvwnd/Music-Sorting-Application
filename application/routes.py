@@ -138,7 +138,7 @@ def sort():
                      #   oldpath = double_backslash_lx(directory,CHANGEME)
                       #  move_files_lx()
 
-        return redirect(url_for('sort'))
+        #return redirect(url_for('sort'))
     return render_template("sort.html",title="Sort", form=form, mp3s=mp3s)
 
 
