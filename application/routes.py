@@ -171,7 +171,7 @@ def amend_directory():
 
 @app.route('/update_artist_genre', methods = ['GET','POST'])
 def update_artist_genre():
-    form = UpdateArtistForm()
+    form = UpdateArtistsForm()
     if form.validate_on_submit():
         Artists.default_genre = form.new_default_genre.data
         db.session.commit()
