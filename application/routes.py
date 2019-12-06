@@ -4,12 +4,12 @@ from application.models import Posts, Users
 from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm
 from flask_login import login_user,current_user, logout_user, login_required
 """ Project imports """
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, flash
 from application import app, db, bcrypt
 from application.models import Artists, Tracks, Genres
 from application.forms import DirectoryForm, GenreForm 
 from flask_login import login_user,current_user, logout_user, login_required
-
+from application.py.file_interactions import create_single_folder
 
 @app.route('/')
 @app.route('/home')
@@ -123,7 +123,14 @@ def amend_directory():
         )
         db.session.add(new_genre)
         db.session.commit()
+
         return redirect(url_for('amend_directory'))
+    check_if_created = create_single_folder(name,folder_path)
+    if check_if_created:
+        flash ("Directory created")
+    else:
+        flash ("Directory already exists")
+
     return render_template("amend_directory.html",title="Amend Stuff", form=form)
 
     

@@ -56,6 +56,16 @@ def folder_identify_lx(path,check_folder):
     print(os.path.isdir(path_and_folder))
     return (os.path.isdir(path_and_folder))
 
+#creates a single directory in a given path - used by routes.py: amend_directory
+def create_single_folder(path,folder):
+    path_and_folder = double_backslash_lx(path,folder)
+    try: # attempt to make a directory in desired locaiton
+        os.mkdir(path_and_folder)
+    except FileExistsError: # if directory already exists it catchs exception and informs user 
+        return False
+    else:
+        return True
+
 
 #Search inside directory for specified folder
 #if found; checks for subgenre folders
