@@ -173,7 +173,8 @@ def amend_directory():
 def update_artist_genre():
     form = UpdateArtistsForm()
     if form.validate_on_submit():
-        Artists.default_genre = form.new_default_genre.data
+        dbartist = Artists.query.filter_by(name = artist_name).first()
+        dbartist.default_genre = form.new_default_genre.data
         db.session.commit()
         return redirect(url_for('update_artist_genre'))
     return render_template("update_artist_genre.html",title="Update Artist Genre", form=form)
