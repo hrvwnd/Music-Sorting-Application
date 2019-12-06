@@ -123,15 +123,16 @@ def sort():
             print (artist_in_db)
 
             if artist_in_db:
-                artist_has_no_default_genre = Artists.query.filter_by(default_genre="").first()
+                artist_has_no_default_genre = bool(Artists.query.filter_by(default_genre="").first())
                 
                 if artist_has_no_default_genre:
                     flash ("Artist has no default genre")
-                    return redirect(url_for("sort"))
+                    pritn ("Artist has not default genre")
+                    #return redirect(url_for("sort"))
                 
                 elif artist_has_no_default_genre == False:
                     artist_dbrecord = Artists.query.filter_by(name=id3_artist)
-                    #print (artist_dbrecord)
+                    print (artist_dbrecord)
                     #--------------------CHANGEME---------------------------------
                     #existing_folder = folder_identify_lx(directory,CHANGEME)
                     #if existing_folder:
