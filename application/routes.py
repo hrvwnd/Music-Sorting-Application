@@ -134,19 +134,29 @@ def sort():
                     #return redirect(url_for("sort"))
                 
                 elif artist_has_no_default_genre == False:
-
                     artist_dbrecord = Artists.query.filter_by(name=id3_artist).first()
-                    print ("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
                     print (artist_dbrecord.default_genre)
+                    artist_default_genre = artist_dbrecord.default_genre #checks if master folder exists
+                    existing_master_folder = folder_identify_lx(directory,"") # checks if sub folder exists
+                    existing_sub_folder = folder_identify_lx(directory,artist_default_genre)
+                    if existing_master_folder and existing_sub_folder:
+                        master_folder_path = double_backslash_lx(directory,mp3)
+                        sub_folder_path = double_backslash_lx(directory,artist_default_genre) # adds genre folder to end of path
+                        sub_folder_path = double_backslash_lx(sub_folder_path,mp3) # adds mp3 name to path
+                        #moving mp3 files
+                        move_files_lx(master_folder_path, sub_folder_path)
+                        if folder_identify_lx(sub_folder_path,""):
+                            succ_or_fail = True
+                        else:
+                            succ_or_fail = False
 
-                    #--------------------CHANGEME---------------------------------
-                    #existing_folder = folder_identify_lx(directory,CHANGEME)
+
                     #if existing_folder:
                      #   oldpath = double_backslash_lx(directory,CHANGEME)
                       #  move_files_lx()
 
         #return redirect(url_for('sort'))
-    return render_template("sort.html",title="Sort", form=form, mp3s=mp3s)
+    return render_template("sort.html",title="Sort", form=form, mp3s=mp3s, succ_or_fail = succ_or_fail)
 
 
 @app.route('/amend_directory', methods = ['GET','POST'])

@@ -156,6 +156,7 @@ def folder_check_lx(directory_path):
 # this is refered to python as just \\ 
 def doubleslash_checker(file_path):
     return file_path.replace("\\","\\\\")    
+#for windows testing purposes to save time manually writing \\ instead of \
 def dircheck():
     dircheck = input("insert directory")
     print (doubleslash_checker(dircheck))
