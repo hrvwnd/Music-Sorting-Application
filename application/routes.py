@@ -114,11 +114,9 @@ def sort():
     list_of_mp3s = identify_mp3_lx("/home/harveyawendon/harvey/music")
     form = SortForm()
     if form.validate_on_submit():
-        pass
+        return redirect(url_for('sort'))
+    return render_template("sort.html",title="Sort", form=form)
 
-
-    
-    pass
 
 @app.route('/amend_directory', methods = ['GET','POST'])
 def amend_directory():
