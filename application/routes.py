@@ -176,9 +176,6 @@ def update_artist_genre():
         Artists.default_genre = form.new_default_genre.data
         db.session.commit()
         return redirect(url_for('update_artist_genre'))
-    elif request.method == "GET":
-        form.artist_name.data = ""
-        form.new_default_genre.data = ""
     return render_template("update_artist_genre.html",title="Update Artist Genre", form=form)
         
 
