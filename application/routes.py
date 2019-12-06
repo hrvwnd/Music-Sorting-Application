@@ -134,7 +134,8 @@ def sort():
                     #return redirect(url_for("sort"))
                 
                 elif artist_has_no_default_genre == False:
-                    artist_dbrecord = Artists.query.filter_by(name=id3_artist)
+                    artist_dbrecord = Artists.query.filter_by(name=id3_artist).first()
+                    print ("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
                     print (artist_dbrecord)
 
                     #--------------------CHANGEME---------------------------------
