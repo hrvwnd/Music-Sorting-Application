@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block body_content %}
+<h1>Update Artist Default Genre</h1>
+<p>Here you can re-write the artist's default genre!</p>
+<div class="form">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.song_title.label }}
+            {% if form.song_title.errors %}
+            {{ form.song_title }}
+            <div class="error">
+                {% for error in form.song_title.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ form.song_title }}
+            {% endif %}
+        </div>
+    </form>
+    <div class= "form-group">
+            {{ form.submit }}
+        </div>
+    </form>
+</div>
+{% endblock body_content %}

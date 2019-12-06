@@ -7,7 +7,8 @@ from flask_login import login_user,current_user, logout_user, login_required
 from flask import render_template, redirect, url_for, request, flash
 from application import app, db, bcrypt
 from application.models import Artists, Tracks, Genres
-from application.forms import DirectoryForm, GenreForm, SortForm, UpdateArtistsForm
+from application.forms import DirectoryForm, GenreForm, SortForm, UpdateArtistsForm \
+    DeleteASong
 from flask_login import login_user,current_user, logout_user, login_required
 from application.py.file_interactions import create_single_folder, identify_mp3_lx, \
     mp3_id3_read, folder_identify_lx, double_backslash_lx, strip_eyed3,move_files_lx 
@@ -179,4 +180,12 @@ def update_artist_genre():
         return redirect(url_for('update_artist_genre'))
     return render_template("update_artist_genre.html",title="Update Artist Genre", form=form)
         
+
+@app.route('\delete', methods = ['GET','POST'])
+def delete():
+    form = DeleteASong()
+    if form.validate_on_submit():
+        Tracks.query.filter_by(title = form.song_title.data).delete()
+        return redirect(url_for('delete'))
+    return render_template("delete.html",title="Delete a song", form=form)
 
