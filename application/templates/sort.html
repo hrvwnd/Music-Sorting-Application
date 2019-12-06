@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+{% extends 'layout.html' %}
+{% block body_content %}
+	<h1>Organise Your Library</h1>
+    <p>Welcome to the organise library page</p>
+    <p>Available songs to sort:</p>
+	{% for mp3 in list_of_mp3s %}
+		<div>
+			<p>{{ mp3 }}</p>
+			<br>
+		</div>
+	{{ form.submit }}
+	{% endfor %}
+{% endblock body_content %}

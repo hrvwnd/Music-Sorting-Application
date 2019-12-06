@@ -7,7 +7,7 @@ from flask_login import login_user,current_user, logout_user, login_required
 from flask import render_template, redirect, url_for, request, flash
 from application import app, db, bcrypt
 from application.models import Artists, Tracks, Genres
-from application.forms import DirectoryForm, GenreForm 
+from application.forms import DirectoryForm, GenreForm, SortForm
 from flask_login import login_user,current_user, logout_user, login_required
 from application.py.file_interactions import create_single_folder
 
@@ -108,9 +108,16 @@ def account():
     return render_template('account.html', title='Account', form=form)
 
 
-"""  ~~~PROJECT ROUTESs~~~   """
+"""  ~~~PROJECT ROUTES~~~   """
 @app.route('/sort', methods = ['GET','POST'])
 def sort():
+    list_of_mp3s = identify_mp3_lx("/home/harveyawendon/harvey/music")
+    form = SortForm()
+    if form.validate_on_submit():
+        pass
+
+
+    
     pass
 
 @app.route('/amend_directory', methods = ['GET','POST'])

@@ -2,11 +2,7 @@
 import os
 import shutil
 
-def identify_mp3():
-    #path = "C:\\Users\\Admin\\PycharmProjects\\pycharmtest"  # path of folder mp3 files download into
-    path = "C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey._assessment\\music"
-    #path = "C:\\Users\\harve\\Documents\\NEW_qa_coding\\project_music_sort-\\music"
-    # remember formatting with "C:\\Users\\Admin\\blahblah\\blah" with double \ (\\)
+def identify_mp3(path):
     for file in os.listdir(path):  # Goes through files checking for .mp3/.wav/.flac files
         if file.endswith(".mp3") or file.endswith(".flac") or file.endswith(".wav"):
             if file.endswith(".flac"):  # flac is often unplayable on rekordbox software
@@ -28,7 +24,16 @@ def identify_mp3():
             else:
                 print("file: ", file)
                 thisshouldalsodosomething = "change this"
-                
+
+
+def identify_mp3_lx(path):
+    list_of_mp3s = list()
+    for file in os.listdir(path):  # Goes through files checking for .mp3/.wav/.flac files
+        if file.endswith(".mp3") #or file.endswith(".flac") or file.endswith(".wav"):
+            list_of_mp3s.append(file)
+    return list_of_mp3s
+
+
 #Adds \\ between path and desired folder 
 #windows version (file path \)
 def double_backslash(path,folder):

@@ -156,3 +156,10 @@ class GenreForm(FlaskForm): #allows user to enter genre name
      #   in_use = folder_identify_lx("harvey/music" + (genre_name.data))
       #  if in_use:
        #     raise ValidationError("Directory already exists")
+
+class SortForm(FlaskForm): #User chooses to sort music 
+    submit = SubmitField ("Sort Library")
+
+    def validate_submit(self,submit):
+        if submit == False:
+            raise ValidationError("Not clicked")
