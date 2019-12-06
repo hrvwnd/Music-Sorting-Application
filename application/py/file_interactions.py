@@ -1,7 +1,10 @@
 """Project Ideas for Code"""
 import os
 import shutil
+import sys
+import eyed3
 
+#windows app version of code
 def identify_mp3(path):
     for file in os.listdir(path):  # Goes through files checking for .mp3/.wav/.flac files
         if file.endswith(".mp3") or file.endswith(".flac") or file.endswith(".wav"):
@@ -25,7 +28,8 @@ def identify_mp3(path):
                 print("file: ", file)
                 thisshouldalsodosomething = "change this"
 
-
+#linux version
+#identifies all files with '.mp3' type and adds them to list
 def identify_mp3_lx(path):
     list_of_mp3s = list()
     for file in os.listdir(path):  # Goes through files checking for .mp3/.wav/.flac files
@@ -61,6 +65,11 @@ def folder_identify_lx(path,check_folder):
     path_and_folder = double_backslash_lx(path,check_folder) #uses function to avoid python \ problems
     print(os.path.isdir(path_and_folder))
     return (os.path.isdir(path_and_folder))
+
+def file_identify_lx(path,check_folder):
+    path_and_folder = double_backslash_lx(path,check_folder) #uses function to avoid python \ problems
+    print(os.path.isdir(path_and_folder))
+    return (os.path.isfile(path_and_folder))
 
 
 #creates a single directory in a given path - used by routes.py: amend_directory
@@ -162,3 +171,22 @@ def move_files():
         shutil.move(path1,path2)
     except FileNotFoundError:
         print ("Error: Check file directories are correct: \n", path1, "\n", path2)
+
+#uses function eyed3 to read id3 tags 
+def mp3_id3_read(path,file_to_check):
+    track_id3_tags = list()
+    if file_identify_lx(path,file_to_check):
+        try:
+            path_and_file = double_backslash_lx(path,file_to_check)
+            load_file = eyed3.load(double_backslash_lx(path_and_file))
+            title = load_file.tag.title
+            album = load_file.tag.album
+            artist = load_file.tag.artist
+            genre = load_file.tag.genre
+        except AttributeError:
+            return "AttributeError"
+        else:
+            tack_id3_tags.append(title,album,artist,genre) 
+            return track_id3_tags
+
+
