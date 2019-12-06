@@ -125,7 +125,7 @@ def amend_directory():
         db.session.commit()
 
         return redirect(url_for('amend_directory'))
-    check_if_created = create_single_folder(name,folder_path)
+    check_if_created = create_single_folder(form.genre.data),form.folder_path.data)
     if check_if_created:
         flash ("Directory created")
     else:
