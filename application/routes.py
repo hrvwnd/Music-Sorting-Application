@@ -122,7 +122,6 @@ def amend_directory():
             folder_path = form.folder_path.data+form.genre_name.data
         )
         db.session.add(new_genre)
-        db.session.add
         db.session.commit()
         return redirect(url_for('amend_directory'))
     return render_template("amend_directory.html",title="Amend Stuff", form=form)
