@@ -115,6 +115,7 @@ def sort():
     directory = "/home/harveyawendon/harvey/music/hiphop" #testing store
     mp3s = identify_mp3_lx(directory)
     form = SortForm()
+    print (str(mp3s))
     if form.is_submitted():
         for mp3 in mp3s:
             track_id3_tags = mp3_id3_read(directory,mp3) # returns id3 tags of track
