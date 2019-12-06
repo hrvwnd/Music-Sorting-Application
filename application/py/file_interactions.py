@@ -29,7 +29,7 @@ def identify_mp3(path):
 def identify_mp3_lx(path):
     list_of_mp3s = list()
     for file in os.listdir(path):  # Goes through files checking for .mp3/.wav/.flac files
-        if file.endswith(".mp3") #or file.endswith(".flac") or file.endswith(".wav"):
+        if file.endswith(".mp3") 
             list_of_mp3s.append(file)
     return list_of_mp3s
 
