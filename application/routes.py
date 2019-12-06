@@ -119,11 +119,14 @@ def sort():
             track_id3_tags = mp3_id3_read(directory,mp3)
             id3_artist = track_id3_tags[2]
             artist_in_db = Artists.query.filter_by(name=id3_artist).first()
+
             if artist_in_db:
                 artist_has_no_default_genre = Artists.query.filter_by(default_genre="").first()
+                
                 if artist_has_no_default_genre:
                     flash ("Artist has no default genre")
                     return redirect(url_for("sort"))
+                
                 elif artist_has_no_default_genre == False:
                     artist_dbrecord = Artists.query.filter_by(name=id3_artist)
                     print (artist_dbrecord)
