@@ -186,7 +186,10 @@ def mp3_id3_read(path,file_to_check):
         except AttributeError:
             return "AttributeError"
         else:
-            track_id3_tags.append(title,album,artist,genre) 
+            track_id3_tags.append(title) 
+            track_id3_tags.append(album)
+            track_id3_tags.append(artist)
+            track_id3_tags.append(genre)
             return track_id3_tags
 
 
