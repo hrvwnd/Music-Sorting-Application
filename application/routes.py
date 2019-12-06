@@ -10,7 +10,8 @@ from application.models import Artists, Tracks, Genres
 from application.forms import DirectoryForm, GenreForm, SortForm
 from flask_login import login_user,current_user, logout_user, login_required
 from application.py.file_interactions import create_single_folder, identify_mp3_lx, \
-    mp3_id3_read, folder_identify_lx, double_backslash_lx, strip_eyed3,move_files_lx
+    mp3_id3_read, folder_identify_lx, double_backslash_lx, strip_eyed3,move_files_lx 
+
 
 @app.route('/')
 @app.route('/home')
@@ -18,11 +19,6 @@ def home():
     postData = Posts.query.all() 
     return render_template('home.html', title='Home', posts=postData)
     
-
-@app.route('/about')
-def about():
-    return render_template('about.html', title='About')
-
 
 @app.route('/post', methods=['GET','POST'])
 @login_required
@@ -150,11 +146,6 @@ def sort():
                         else:
                             succ_or_fail = False
 
-
-                    #if existing_folder:
-                     #   oldpath = double_backslash_lx(directory,CHANGEME)
-                      #  move_files_lx()
-
         return redirect(url_for('sort'))
     return render_template("sort.html",title="Sort", form=form, mp3s=mp3s)
 
@@ -177,8 +168,15 @@ def amend_directory():
         return redirect(url_for('amend_directory'))
     return render_template("amend_directory.html",title="Amend Stuff", form=form)
 
-    
-@app.route('/manual_sort', methods = ['GET','POST'])
-def manual_sot():
-    pass
+
+@app.route('/update_artist_genre', methods = ['GET','POST'])
+def update_artist_genre():
+    form = UpdateArtistForm()
+    if form.validate_on_submit():
+        Artists.default_genre = form.new_default_genre.data
+        db.session.commit()
+    else:
+        return redirect(url_for('update_artist_genre'))
+    return render_template("update_artist_genre.html",title="Update Artist Genre", form=form)
+        
 

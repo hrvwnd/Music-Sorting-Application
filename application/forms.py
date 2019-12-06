@@ -160,6 +160,24 @@ class GenreForm(FlaskForm): #allows user to enter genre name
 class SortForm(FlaskForm): #User chooses to sort music 
     submit = SubmitField ("Sort Library")
 
-    #def validate_submit(self,submit):
-     #   if submit == False:
-      #      raise ValidationError("Not clicked")
+#allows user to enter an artist name and amend the default_genre of that artist
+class UpdateArtistsForm(FlaskForm): #
+    artist_name = StringField("Artist Name",
+    validators = [
+        DataRequired(),
+        Length(min=2, max = 30)
+    ])
+
+    new_default_genre = StringField("Genre for artist",
+    validators= = [
+        DataRequired(),
+        Length(min = 3, max = 99)
+    ])
+    def validate_artist_name(self,artist_name):
+        exists = Artists.query.filter_by(name = artist_name).first()
+        if exists==False:
+            raise ValidationError("Artist Does Not exist yet")
+    
+    
+
+
