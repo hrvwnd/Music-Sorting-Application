@@ -176,7 +176,7 @@ class UpdateArtistsForm(FlaskForm): #
     def validate_artist_name(self,artist_name):
         exists = Artists.query.filter_by(name = artist_name).first()
         if exists==False:
-            raise ValidationError("Artist Does Not exist yet")
+            raise ValidationError("Artist Does Not exist yet so you cant add a genre")
     
     
 
