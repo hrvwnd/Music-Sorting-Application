@@ -1,6 +1,6 @@
 import sys
 import eyed3
-
+'''
 try:
     file = eyed3.load("/home/harveyawendon/harvey/music/test.mp3")
     artist = file.tag.artist
@@ -20,3 +20,5 @@ except AttributeError:
 else:
     print (file.tag.artist)
     print (file.tag.title)
+'''
+

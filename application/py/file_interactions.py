@@ -178,7 +178,7 @@ def mp3_id3_read(path,file_to_check):
     if file_identify_lx(path,file_to_check):
         try:
             path_and_file = double_backslash_lx(path,file_to_check)
-            load_file = eyed3.load(double_backslash_lx(path_and_file))
+            load_file = eyed3.load(path_and_file)
             title = load_file.tag.title
             album = load_file.tag.album
             artist = load_file.tag.artist
