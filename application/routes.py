@@ -112,7 +112,7 @@ def account():
 """  ~~~PROJECT ROUTES~~~   """
 @app.route('/sort', methods = ['GET','POST'])
 def sort():
-    directory = "/home/harveyawendon/harvey/music/hiphop" #testing store
+    directory = "/home/harveyawendon/harvey/music" #testing store
     mp3s = identify_mp3_lx(directory)
     form = SortForm()
     print (str(mp3s))
