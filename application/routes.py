@@ -7,7 +7,7 @@ from flask_login import login_user,current_user, logout_user, login_required
 from flask import render_template, redirect, url_for, request, flash
 from application import app, db, bcrypt
 from application.models import Artists, Tracks, Genres
-from application.forms import DirectoryForm, GenreForm, SortForm, UpdateArtistsForm \
+from application.forms import DirectoryForm, GenreForm, SortForm, UpdateArtistsForm, \
     DeleteASong
 from flask_login import login_user,current_user, logout_user, login_required
 from application.py.file_interactions import create_single_folder, identify_mp3_lx, \
