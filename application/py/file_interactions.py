@@ -207,5 +207,6 @@ def mp3_id3_read(path,file_to_check):
     else:
         return False
  #eye3d has error text in output that needs to be removed if output is to be used
+ #Turns out I misunderstood the error
 def strip_eyed3(eyed3_output):
     return eyed3_output.split("\n",1)[1]
