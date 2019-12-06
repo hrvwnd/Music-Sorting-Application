@@ -115,7 +115,7 @@ def sort():
     form = SortForm()
     if form.validate_on_submit():
         return redirect(url_for('sort'))
-    return render_template("sort.html",title="Sort", form=form)
+    return render_template("sort.html",title="Sort", form=form, list_of_mp3s=list_of_mp3s)
 
 
 @app.route('/amend_directory', methods = ['GET','POST'])
