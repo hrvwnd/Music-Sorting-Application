@@ -158,7 +158,6 @@ class GenreForm(FlaskForm): #allows user to enter genre name
        #     raise ValidationError("Directory already exists")
 
 class SortForm(FlaskForm): #User chooses to sort music 
-    
     submit = SubmitField ("Sort Library")
 
     #def validate_submit(self,submit):
