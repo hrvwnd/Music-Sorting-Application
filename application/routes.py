@@ -111,11 +111,11 @@ def account():
 """  ~~~PROJECT ROUTES~~~   """
 @app.route('/sort', methods = ['GET','POST'])
 def sort():
-    list_of_mp3s = identify_mp3_lx("/home/harveyawendon/harvey/music")
+    mp3s = identify_mp3_lx("/home/harveyawendon/harvey/music")
     form = SortForm()
     if form.validate_on_submit():
         return redirect(url_for('sort'))
-    return render_template("sort.html",title="Sort", form=form, list_of_mp3s=list_of_mp3s)
+    return render_template("sort.html",title="Sort", form=form, mp3s=mp3s)
 
 
 @app.route('/amend_directory', methods = ['GET','POST'])
