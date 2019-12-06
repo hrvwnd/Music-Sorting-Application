@@ -118,7 +118,7 @@ def sort():
         for mp3 in mp3s:
             track_id3_tags = mp3_id3_read(directory,mp3)
             id3_artist = track_id3_tags[2]
-            artist_in_db = Artists.query.filter_by(name=id3_artist).first()
+            artist_in_db = Artists.query.filter_by(name=id3_artist).exists()
             print (id3_artist)
             print (artist_in_db)
 
