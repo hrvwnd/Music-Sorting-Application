@@ -155,8 +155,8 @@ def sort():
                      #   oldpath = double_backslash_lx(directory,CHANGEME)
                       #  move_files_lx()
 
-        #return redirect(url_for('sort'))
-    return render_template("sort.html",title="Sort", form=form, mp3s=mp3s, succ_or_fail = succ_or_fail)
+        return redirect(url_for('sort'))
+    return render_template("sort.html",title="Sort", form=form, mp3s=mp3s)
 
 
 @app.route('/amend_directory', methods = ['GET','POST'])
