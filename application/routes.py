@@ -112,6 +112,7 @@ def account():
 @app.route('/sort', methods = ['GET','POST'])
 def sort():
     directory = "/home/harveyawendon/harvey/music" #testing store
+    mp3s = identify_mp3_lx(directory)
     form = SortForm()
     if form.validate_on_submit():
         for mp3 in mp3s:
