@@ -152,7 +152,7 @@ class GenreForm(FlaskForm): #allows user to enter genre name
         in_use = Genres.query.filter_by(name=genre_name.data).first()
         if in_use:
             raise ValidationError("Genre Already exists")
-    def validate_folder_path(self,folder_path):
-        in_use = folder_identify_lx("harvey/music" + (genre_name.data))
-        if in_use:
-            raise ValidationError("Directory already exists")
+    #def validate_folder_path(self,folder_path):
+     #   in_use = folder_identify_lx("harvey/music" + (genre_name.data))
+      #  if in_use:
+       #     raise ValidationError("Directory already exists")
