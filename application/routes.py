@@ -125,10 +125,10 @@ def sort():
 
             if artist_in_db:
                 artist_has_no_default_genre = bool(Artists.query.filter_by(default_genre="").first())
-                
+                print ("no default genre: " + str(artist_has_no_default_genre))
                 if artist_has_no_default_genre:
                     flash ("Artist has no default genre")
-                    pritn ("Artist has not default genre")
+                    print ("Artist has not default genre")
                     #return redirect(url_for("sort"))
                 
                 elif artist_has_no_default_genre == False:
