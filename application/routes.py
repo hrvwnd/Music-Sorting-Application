@@ -10,7 +10,7 @@ from application.models import Artists, Tracks, Genres
 from application.forms import DirectoryForm, GenreForm, SortForm
 from flask_login import login_user,current_user, logout_user, login_required
 from application.py.file_interactions import create_single_folder, identify_mp3_lx, \
-    mp3_id3_read, folder_identify_lx, double_backslash_lx, strip_eyed3
+    mp3_id3_read, folder_identify_lx, double_backslash_lx, strip_eyed3,move_files_lx
 
 @app.route('/')
 @app.route('/home')
