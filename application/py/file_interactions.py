@@ -110,18 +110,18 @@ def folder_check(directory_path):
             dir_exists += item + "\n"
 
     if masterdir_created != "":
-        print (masterdir_created + " has been created in " + directory_name)
+        print (masterdir_created + " has been created in " + directory_path)
     if dir_created != "":
-        print(str(dir_created) + "\n genre folders have been created in: " + directory_name)
+        print(str(dir_created) + "\n genre folders have been created in: " + directory_path)
     if masterdir_exists != "":
-        print (masterdir_exists + "already exists in " + directory_name)
+        print (masterdir_exists + "already exists in " + directory_path)
     if dir_exists != "":
         print ("Pre-existing Genre folders: ")
         print (dir_exists) 
 
 
 #linux version of Folder check
-def folder_check_lx(directory_name):
+def folder_check_lx(directory_path):
     sub_genres = ["liquid","hiphop"]#,"neurofunk","trance","hardstyle","dubstep","rock"]
     masterdir_created = ""
     masterdir_exists = ""
@@ -129,14 +129,14 @@ def folder_check_lx(directory_name):
     dir_exists = ""
     
     try: # attempt to make a directory in desired locaiton
-        os.mkdir(directory_name)
+        os.mkdir(directory_path)
     except FileExistsError: # if directory already exists it catchs exception and informs user 
         masterdir_exists += "MASTER Directory: music "
     else:
         masterdir_created += "MASTER Directory: music"
     
     for item in sub_genres:
-        path_and_folder = double_backslash_lx(directory_name,item)
+        path_and_folder = double_backslash_lx(directory_path,item)
         try:            
             os.mkdir(path_and_folder)
             dir_created += item + "\n"
@@ -206,4 +206,6 @@ def mp3_id3_read(path,file_to_check):
             return track_id3_tags
     else:
         return False
- 
+ #eye3d has error text in output that needs to be removed if output is to be used
+def strip_eyed3(eyed3_output):
+    return eyed3_output.split("\n",1)[1]

@@ -9,7 +9,8 @@ from application import app, db, bcrypt
 from application.models import Artists, Tracks, Genres
 from application.forms import DirectoryForm, GenreForm, SortForm
 from flask_login import login_user,current_user, logout_user, login_required
-from application.py.file_interactions import create_single_folder, identify_mp3_lx, mp3_id3_read, folder_identify_lx, double_backslash_lx
+from application.py.file_interactions import create_single_folder, identify_mp3_lx, \
+    mp3_id3_read, folder_identify_lx, double_backslash_lx, strip_eyed3
 
 @app.route('/')
 @app.route('/home')
@@ -118,6 +119,7 @@ def sort():
         for mp3 in mp3s:
             track_id3_tags = mp3_id3_read(directory,mp3)
             id3_artist = track_id3_tags[2]
+            id3_artist = strip_eyed3(id3_artist)
             artist_in_db = bool(Artists.query.filter_by(name=id3_artist).first())
             print (id3_artist)
             print (artist_in_db)
