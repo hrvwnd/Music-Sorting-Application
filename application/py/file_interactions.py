@@ -47,7 +47,7 @@ def double_backslash(path,folder):
 #linux version
 def double_backslash_lx(path,folder):
     path_and_folder = path + "/" + folder
-    print (path_and_folder)
+    #print (path_and_folder)
     return path_and_folder
 
 
@@ -63,12 +63,12 @@ def folder_identify(path,check_folder):
 #linux version
 def folder_identify_lx(path,check_folder):
     path_and_folder = double_backslash_lx(path,check_folder) #uses function to avoid python \ problems
-    print(os.path.isdir(path_and_folder))
+    #print(os.path.isdir(path_and_folder))
     return (os.path.isdir(path_and_folder))
 
 def file_identify_lx(path,check_folder):
     path_and_folder = double_backslash_lx(path,check_folder) #uses function to avoid python \ problems
-    print(os.path.isdir(path_and_folder))
+    #print(os.path.isdir(path_and_folder))
     return (os.path.isfile(path_and_folder))
 
 
@@ -160,7 +160,7 @@ def dircheck():
     dircheck = input("insert directory")
     print (doubleslash_checker(dircheck))
 
-def move_files():
+def move_files(path1,path2):
     path1 = "C:\\Users\\harve\\Documents\\qacoding\\harvey._assessment\\music\\liquid.mp3"
     path2 = "C:\\Users\\harve\\Documents\\qacoding\\harvey._assessment\\music\\liquid\\liquid.mp3"
     try:
@@ -172,6 +172,17 @@ def move_files():
     except FileNotFoundError:
         print ("Error: Check file directories are correct: \n", path1, "\n", path2)
 
+def move_files_lx(path1,path2):
+    try:
+        os.rename(path1, path2)
+    except FileNotFoundError:
+        return False
+    else: 
+        return True
+    try:
+        shutil.move(path1,path2)
+    except FileNotFoundError:
+        print ("Error: Check file directories are correct: \n", path1, "\n", path2)
 #uses function eyed3 to read id3 tags 
 def mp3_id3_read(path,file_to_check):
     track_id3_tags = list()
@@ -191,5 +202,6 @@ def mp3_id3_read(path,file_to_check):
             track_id3_tags.append(artist)
             track_id3_tags.append(genre)
             return track_id3_tags
-
-
+    else:
+        return False
+ 

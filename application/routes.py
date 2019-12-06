@@ -9,7 +9,7 @@ from application import app, db, bcrypt
 from application.models import Artists, Tracks, Genres
 from application.forms import DirectoryForm, GenreForm, SortForm
 from flask_login import login_user,current_user, logout_user, login_required
-from application.py.file_interactions import create_single_folder, identify_mp3_lx
+from application.py.file_interactions import create_single_folder, identify_mp3_lx, mp3_id3_read, folder_identify_lx, double_backslash_lx
 
 @app.route('/')
 @app.route('/home')
@@ -111,9 +111,27 @@ def account():
 """  ~~~PROJECT ROUTES~~~   """
 @app.route('/sort', methods = ['GET','POST'])
 def sort():
-    mp3s = identify_mp3_lx("/home/harveyawendon/harvey/music")
+    directory = "/home/harveyawendon/harvey/music" #testing store
     form = SortForm()
     if form.validate_on_submit():
+        for mp3 in mp3s:
+            track_id3_tags = mp3_id3_read(directory,mp3)
+            id3_artist = track_id3_tags[2]
+            artist_in_db = Artists.query.filter_by(name=id3_artist).first()
+            if artist_in_db:
+                artist_has_no_default_genre = Artists.query.filter_by(default_genre="").first()
+                if artist_has_no_default_genre:
+                    flash ("Artist has no default genre")
+                    return redirect(url_for("sort"))
+                elif artist_has_no_default_genre == False:
+                    artist_dbrecord = Artists.query.filter_by(name=id3_artist)
+                    print (artist_dbrecord)
+                    #--------------------CHANGEME---------------------------------
+                    #existing_folder = folder_identify_lx(directory,CHANGEME)
+                    #if existing_folder:
+                     #   oldpath = double_backslash_lx(directory,CHANGEME)
+                      #  move_files_lx()
+
         return redirect(url_for('sort'))
     return render_template("sort.html",title="Sort", form=form, mp3s=mp3s)
 
