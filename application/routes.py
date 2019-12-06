@@ -117,9 +117,9 @@ def sort():
     form = SortForm()
     if form.is_submitted():
         for mp3 in mp3s:
-            track_id3_tags = mp3_id3_read(directory,mp3)
-            id3_artist = track_id3_tags[2]
-            id3_artist = strip_eyed3(id3_artist)
+            track_id3_tags = mp3_id3_read(directory,mp3) # returns id3 tags of track
+            id3_artist = track_id3_tags[2] #selects artist (title, album, artist, genre)
+            id3_artist = strip_eyed3(id3_artist) #strips 'Frame 'RVAD' is not yet supported' exception warning
             artist_in_db = bool(Artists.query.filter_by(name=id3_artist).first())
             print (id3_artist)
             print (artist_in_db)
