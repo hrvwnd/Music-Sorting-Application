@@ -130,12 +130,12 @@ class DirectoryForm(FlaskForm): #user enters directory path
     )
     submit = SubmitField ('Submit')
 
-    def validate_directory_path(self,folder_path):
-        in_use = folder_identify_lx(directory_path)
+    def validate_directory_path(self,directory_path):
+        in_use = folder_identify_lx(directory_path,"")
         if in_use:
             raise ValidationError("Directory already exists")
         if in_use == False:
-            folder_check(directory_path)
+            folder_check_lx(directory_path,"")
             #change me <-- add make a directory function
 
 class GenreForm(FlaskForm): #allows user to enter genre name
@@ -169,7 +169,7 @@ class UpdateArtistsForm(FlaskForm): #
     ])
 
     new_default_genre = StringField("Genre for artist",
-    validators= = [
+    validators = [
         DataRequired(),
         Length(min = 3, max = 99)
     ])
