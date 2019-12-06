@@ -181,7 +181,7 @@ def update_artist_genre():
     return render_template("update_artist_genre.html",title="Update Artist Genre", form=form)
         
 
-@app.route('\delete', methods = ['GET','POST'])
+@app.route('/delete', methods = ['GET','POST'])
 def delete():
     form = DeleteASong()
     if form.validate_on_submit():
