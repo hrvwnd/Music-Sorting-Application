@@ -117,7 +117,7 @@ def sort():
 def amend_directory():
     form = GenreForm()
     if form.validate_on_submit():
-        check_if_created = create_single_folder(str(form.genre_name.data),str(form.folder_path.data))
+        check_if_created = create_single_folder(str(form.folder_path.data),str(form.genre_name.data))
         if check_if_created:
             new_genre = Genres(
                 name = form.genre_name.data,

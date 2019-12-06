@@ -49,12 +49,14 @@ def folder_identify(path,check_folder):
     path_and_folder = double_backslash(path,check_folder) #uses function to avoid python \ problems
     print(os.path.isdir(path_and_folder))
     return (os.path.isdir(path_and_folder))
-folder_identify("C:\\Users\\Admin\\Desktop\\try_to_use_git\\harvey\\music","liquid")
+
+
 #linux version
 def folder_identify_lx(path,check_folder):
     path_and_folder = double_backslash_lx(path,check_folder) #uses function to avoid python \ problems
     print(os.path.isdir(path_and_folder))
     return (os.path.isdir(path_and_folder))
+
 
 #creates a single directory in a given path - used by routes.py: amend_directory
 def create_single_folder(path,folder):
@@ -143,7 +145,7 @@ def doubleslash_checker(file_path):
 def dircheck():
     dircheck = input("insert directory")
     print (doubleslash_checker(dircheck))
-#dircheck()
+
 def move_files():
     path1 = "C:\\Users\\harve\\Documents\\qacoding\\harvey._assessment\\music\\liquid.mp3"
     path2 = "C:\\Users\\harve\\Documents\\qacoding\\harvey._assessment\\music\\liquid\\liquid.mp3"
