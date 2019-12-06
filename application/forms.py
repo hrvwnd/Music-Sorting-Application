@@ -173,6 +173,7 @@ class UpdateArtistsForm(FlaskForm): #
         DataRequired(),
         Length(min = 3, max = 99)
     ])
+    submit = SubmitField ("Change default genre")
     def validate_artist_name(self,artist_name):
         exists = Artists.query.filter_by(name = artist_name).first()
         if exists==False:
