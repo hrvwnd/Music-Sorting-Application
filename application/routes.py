@@ -117,20 +117,18 @@ def sort():
 def amend_directory():
     form = GenreForm()
     if form.validate_on_submit():
-        new_genre = Genres(
-            name = form.genre_name.data,
-            folder_path = form.folder_path.data+form.genre_name.data
-        )
-        db.session.add(new_genre)
-        db.session.commit()
-
+        check_if_created = create_single_folder(str(form.genre_name.data),str(form.folder_path.data))
+        if check_if_created:
+            new_genre = Genres(
+                name = form.genre_name.data,
+                folder_path = form.folder_path.data+form.genre_name.data
+            )
+            db.session.add(new_genre)
+            db.session.commit()
+            flash ("Genre Folder Created")
+        else:
+            flash ("Genre Folder Already Exists")       
         return redirect(url_for('amend_directory'))
-    check_if_created = create_single_folder(str(form.genre_name.data),str(form.folder_path.data))
-    if check_if_created:
-        flash ("Genre Folder Created")
-    else:
-        flash ("Genre Folder Already Exists")
-
     return render_template("amend_directory.html",title="Amend Stuff", form=form)
 
     
