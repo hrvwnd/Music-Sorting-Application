@@ -94,14 +94,14 @@ def folder_check(directory_path):
     dir_exists = ""
     
     try: # attempt to make a directory in desired locaiton
-        os.mkdir(directory_name)
+        os.mkdir(directory_path)
     except FileExistsError: # if directory already exists it catchs exception and informs user 
         masterdir_exists += "MASTER Directory: music "
     else:
         masterdir_created += "MASTER Directory: music"
     
     for item in sub_genres:
-        path_and_folder = double_backslash(directory_name,item)
+        path_and_folder = double_backslash(directory_path,item)
         try:            
             os.mkdir(path_and_folder)
             dir_created += item + "\n"
@@ -121,7 +121,7 @@ def folder_check(directory_path):
 
 
 #linux version of Folder check
-def folder_check_lx(directory_path):
+def folder_check_lx(directory_name):
     sub_genres = ["liquid","hiphop"]#,"neurofunk","trance","hardstyle","dubstep","rock"]
     masterdir_created = ""
     masterdir_exists = ""
@@ -171,7 +171,7 @@ def move_files(path1,path2):
         shutil.move(path1,path2)
     except FileNotFoundError:
         print ("Error: Check file directories are correct: \n", path1, "\n", path2)
-
+#linux version of move files
 def move_files_lx(path1,path2):
     try:
         os.rename(path1, path2)
@@ -183,6 +183,8 @@ def move_files_lx(path1,path2):
         shutil.move(path1,path2)
     except FileNotFoundError:
         print ("Error: Check file directories are correct: \n", path1, "\n", path2)
+
+
 #uses function eyed3 to read id3 tags 
 def mp3_id3_read(path,file_to_check):
     track_id3_tags = list()

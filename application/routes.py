@@ -111,11 +111,10 @@ def account():
 """  ~~~PROJECT ROUTES~~~   """
 @app.route('/sort', methods = ['GET','POST'])
 def sort():
-    directory = "/home/harveyawendon/harvey/music" #testing store
+    directory = "/home/harveyawendon/harvey/music/hiphop" #testing store
     mp3s = identify_mp3_lx(directory)
     form = SortForm()
     if form.is_submitted():
-        print ("AHHHHH")
         for mp3 in mp3s:
             track_id3_tags = mp3_id3_read(directory,mp3)
             id3_artist = track_id3_tags[2]
