@@ -118,7 +118,7 @@ def sort():
         for mp3 in mp3s:
             track_id3_tags = mp3_id3_read(directory,mp3)
             id3_artist = track_id3_tags[2]
-            artist_in_db = Artists.query.filter_by(name=id3_artist).exists()
+            artist_in_db = Artists.query.filter_by(name=id3_artist).first()
             print (id3_artist)
             print (artist_in_db)
 
@@ -131,7 +131,7 @@ def sort():
                 
                 elif artist_has_no_default_genre == False:
                     artist_dbrecord = Artists.query.filter_by(name=id3_artist)
-                    print (artist_dbrecord)
+                    #print (artist_dbrecord)
                     #--------------------CHANGEME---------------------------------
                     #existing_folder = folder_identify_lx(directory,CHANGEME)
                     #if existing_folder:
