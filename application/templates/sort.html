@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+{% extends 'layout.html' %}
+{% block body_content %}
+	<h1>Organise Your Library</h1>
+    <p>Welcome to the organise library page</p>
+    <p>Available songs to sort:</p>
+	{% for mp3 in mp3s %}
+		<div>
+			<p>{{ mp3 }}</p>
+			<br>
+		</div>
+	{% endfor %}
+	<form method = "POST" action="">
+		<div class="form-group">
+	{{ form.submit }}
+	</div>
+	</form>
+{% endblock body_content %}
