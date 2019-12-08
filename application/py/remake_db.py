@@ -23,6 +23,7 @@ def remake_db():
     
     track1 = Tracks(title = "You Can't Hide, You Can't Run (prod. by Evidence)", filename = "test.mp3", album = "20/20", artist_id = "2",genre_id = "2")
     track2 = Tracks(title = "Guesswork", filename = "test2.mp3", album = "All The Shimmering Things", artist_id = "1", genre_id = "1")
+    track3 = Tracks(title = "deletetest", filename = "musicfileexample1.mp3", album = "", artist_id = "1", genre_id = "1")
     #saves users to database
 
     db.session.add(artist1)
@@ -31,5 +32,6 @@ def remake_db():
     db.session.add(genre2)
     db.session.add(track1)
     db.session.add(track2)
+    db.session.add(track3)
 
     db.session.commit()
