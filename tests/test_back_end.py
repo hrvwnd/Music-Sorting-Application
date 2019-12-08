@@ -15,7 +15,7 @@ class UnitBase(TestCase):
                     +str(getenv('MYSQL_PASSWORD'))+'@'+str(getenv('MYSQL_HOST'))+'/'+str(getenv('MYSQL_DB_TEST')))
         return app
 
-    def create_app(self):
+    def setup(self):
         #creates and drops database
         # Will be called for every test 
 
