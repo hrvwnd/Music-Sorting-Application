@@ -83,11 +83,12 @@ class UnitTest(UnitBase):
         db.session.commit()
         self.assertEqual(Genres.query.count(), 3)
     """
+    """
     def test_delete_delete(self):
         #tests the delete functionality of the app
         Tracks.query.filter_by(title = "deletetest").delete()
         self.assertEqual(Tracks.query.count(),2)
-
+    """
 
 
     
