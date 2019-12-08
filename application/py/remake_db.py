@@ -1,4 +1,4 @@
-def remake_db(self):
+def remake_db():
     #creates and drops database
     # Will be called for every test 
 
