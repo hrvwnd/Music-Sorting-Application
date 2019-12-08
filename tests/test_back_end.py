@@ -59,11 +59,6 @@ class UnitTest(UnitBase):
         response = self.client.get(url_for('sort'))
         self.assertEqual(response.status_code, 200)
 
-    def test_sort_without_url(self):
-        # tests whether the default redirect is sort
-        response = self.client.get(url_for(''))
-        self.assertEqual(response.status_code, 200)
-
     def test_amend_directory_url(self):
         response = self.client.get(url_for('amend_directory'))
         self.assertEqual(response.status_code, 200)
@@ -76,9 +71,7 @@ class UnitTest(UnitBase):
         response = self.client.get(url_for('delete'))
         self.assertEqual(response.status_code, 200)
     
-    def test_unreachable_url(self):
-        response = self.client.get(url_for('not-real'))
-        self.assertEqual(response.status_code, 400)
+
 
     
 
