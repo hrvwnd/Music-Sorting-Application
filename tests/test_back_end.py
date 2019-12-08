@@ -57,28 +57,28 @@ class UnitTest(UnitBase):
     def test_sort_with_url(self):
         # is testing page reachable 
         response = self.client.get(url_for('sort'))
-        self.assrtEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_sort_without_url(self):
         # tests whether the default redirect is sort
         response = self.client.get(url_for(''))
-        self.assrtEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_amend_directory_url(self):
         response = self.client.get(url_for('amend_directory'))
-        self.assrtEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_update_artist_genre_url(self):
         response = self.client.get(url_for('update_artist_genre'))
-        self.assrtEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
     
     def test_delete_url(self):
         response = self.client.get(url_for('delete'))
-        self.assrtEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
     
     def test_unreachable_url(self):
         response = self.client.get(url_for('not-real'))
-        self.assrtEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 400)
 
     
 
