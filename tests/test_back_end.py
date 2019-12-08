@@ -1,5 +1,4 @@
 import unittest
-
 from flask import abort, url_for
 from flask_testing import TestCase
 from os import getenv
@@ -7,6 +6,13 @@ from application import app, db
 from application.models import Tracks, Artists, Genres
 
 class UnitBase(TestCase):
+
+     def create_app(self):
+        #pass in test configurations
+        config_name = "testing"
+        app.config.update(
+                SQLALCHEMY_DATABASE_URI='mysql+pymysql://'+str(getenv('MYSQL_USER'))+':'+str(getenv('MYSQL_PASSWORD'))+'@'+str(getenv('MYSQL_HOST'))+'/'+str(getenv('MYSQL_DB_TEST')))
+        return app
 
     def create_app(self):
         #creates and drops database
@@ -17,10 +23,15 @@ class UnitBase(TestCase):
         db.create_all()
 
         #creates test artists
+        artist1 = Artists(name = "keeno", default_genre = "liquid")
+        artist2 = Artists(name = "dilated peoples", default_genre = "hiphop")
 
-        artist1 = Artists(name = "dilated peoples", default_genre = "hiphop")
-        artist2 = Artists(name = "keeno", default_genre = "liquid")
-
+        
+        genre1 = Genres(name="liquid", folder_path = "/harvey/music/liquid")
+        genre2 = Genres(name = "hiphop", folder_path = "/harvey/music/hiphop")
+        
+        track1 = Tracks(title = "You Can't Hide, You Can't Run (prod. by Evidence)", filename = "test.mp3", album = "20/20", artist_id = "2",genre_id = "2")
+        track2 = Tracks(title = "Guesswork", filename = "test2.mp3", album = "All The Shimmering Things", artist_id = "1", genre_id = "1")
         #saves users to database
 
         db.session.add(artist1)
