@@ -6,7 +6,7 @@ from os import getenv
 from application import app, db
 from application.models import Tracks, Artists, Genres
 
-class UnitBest(TestCase):
+class UnitBase(TestCase):
 
     def create_app(self):
         #creates and drops database
