@@ -77,7 +77,7 @@ class UnitTest(UnitBase):
 
     def test_amend_directory_post(self):
         # create test post
-        genretest = Genres(name="liquid", folder_path = "/opt/flask-app/music/post")
+        genretest = Genres(name="testgenre", folder_path = "/opt/flask-app/music/genretest")
         # save post to database
         db.session.add(genretest)
         db.session.commit()
