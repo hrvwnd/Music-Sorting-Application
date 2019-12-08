@@ -32,7 +32,7 @@ class GenreForm(FlaskForm): #allows user to enter genre name
         Length(min=2, max = 20)
             ]
         )
-    folder_path = StringField("Folder Path: ", default="/opt/flask-app") 
+    folder_path = StringField("Folder Path: ", default="/opt/flask-app/music/") 
     # directory requires changing for hosting on gunicorn and jenkins
     # /home/harveyawendon/harvey/music
     # /opt/flask-app

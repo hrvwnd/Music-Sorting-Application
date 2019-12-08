@@ -6,7 +6,7 @@ from application import app, db
 from application.models import Tracks, Artists, Genres
 
 class UnitBase(TestCase):
-
+"""
     def create_app(self):
         #pass in test configurations
         config_name = "testing"
@@ -14,7 +14,7 @@ class UnitBase(TestCase):
                 SQLALCHEMY_DATABASE_URI='mysql+pymysql://'+str(getenv('MYSQL_USER'))+':' \
                     +str(getenv('MYSQL_PASSWORD'))+'@'+str(getenv('MYSQL_HOST'))+'/'+str(getenv('MYSQL_DB_TEST')))
         return app
-
+"""
     def setup(self):
         #creates and drops database
         # Will be called for every test 
