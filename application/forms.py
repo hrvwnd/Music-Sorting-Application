@@ -32,7 +32,10 @@ class GenreForm(FlaskForm): #allows user to enter genre name
         Length(min=2, max = 20)
             ]
         )
-    folder_path = StringField("Folder Path: ", default="/harvey/music")
+    folder_path = StringField("Folder Path: ", default="/home/opt/flask-app/harvey/music") 
+    # directory requires changing for hosting on gunicorn and jenkins
+    # /home/harveyawendon/harvey/music
+    # /home/opt/flask-app/harvey/music
     submit = SubmitField('Add Genre') #button to submit data
     
     def validate_genre_name(self,genre_name):

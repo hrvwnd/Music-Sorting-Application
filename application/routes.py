@@ -13,7 +13,8 @@ from application.py.file_interactions import create_single_folder, identify_mp3_
 @app.route("/")
 @app.route('/sort', methods = ['GET','POST'])
 def sort():
-    directory = "/harvey/music" #testing store
+    directory = "/home/harveyawendon/harvey/music" #testing store (only works on hosted vm)
+    directory = "/home/opt/flask-app/harvey/music"
     mp3s = identify_mp3_lx(directory)
     form = SortForm()
     print (str(mp3s))
