@@ -32,7 +32,7 @@ class UnitBase(TestCase):
 
         db.session.remove()
 
-        drop.drop_all()
+        db.drop_all()
 
 class UnitTest(UnitBase):
     # testing accessability of webpages 
