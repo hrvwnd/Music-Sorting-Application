@@ -74,7 +74,7 @@ class UnitTest(UnitBase):
     def test_delete_url(self):
         response = self.client.get(url_for('delete'))
         self.assertEqual(response.status_code, 200)
-    """
+
     def test_amend_directory_post(self):
         # create test post
         genretest = Genres(name="liquid", folder_path = "/opt/flask-app/music/post")
@@ -82,7 +82,6 @@ class UnitTest(UnitBase):
         db.session.add(genretest)
         db.session.commit()
         self.assertEqual(Genres.query.count(), 3)
-    """
     """
     def test_delete_delete(self):
         #tests the delete functionality of the app
