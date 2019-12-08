@@ -3,7 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo,ValidationError
 from application.models import Tracks, Artists, Genres
-from application.py.file_interactions import identify_mp3, double_backslash_lx,folder_identify_lx, folder_check, move_files
+from application.py.file_interactions import double_backslash_lx,folder_identify_lx, folder_check, move_files
 from application.__init__ import LoginManager
 from flask_login import LoginManager, current_user
 

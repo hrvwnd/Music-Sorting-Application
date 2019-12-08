@@ -93,17 +93,7 @@ def dircheck():
     dircheck = input("insert directory")
     print (doubleslash_checker(dircheck))
 
-def move_files(path1,path2):
-    path1 = "C:\\Users\\harve\\Documents\\qacoding\\harvey._assessment\\music\\liquid.mp3"
-    path2 = "C:\\Users\\harve\\Documents\\qacoding\\harvey._assessment\\music\\liquid\\liquid.mp3"
-    try:
-        os.rename(path1, path2)
-    except FileNotFoundError:
-        print ("Error: Check file directories are correct: \n", path1, "\n", path2)
-    try:
-        shutil.move(path1,path2)
-    except FileNotFoundError:
-        print ("Error: Check file directories are correct: \n", path1, "\n", path2)
+
 #linux version of move files
 def move_files_lx(path1,path2):
     try:
