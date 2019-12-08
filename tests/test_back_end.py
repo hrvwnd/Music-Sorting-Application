@@ -37,6 +37,11 @@ class UnitBase(TestCase):
 
         db.session.add(artist1)
         db.session.add(artist2)
+        db.session.add(genre1)
+        db.session.add(genre2)
+        db.session.add(track1)
+        db.session.add(track2)
+
         db.session.commit()
 
     def TearDown(self):
