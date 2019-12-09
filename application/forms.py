@@ -66,7 +66,7 @@ class UpdateArtistsForm(FlaskForm): #
     submit = SubmitField ("Change default genre")
     
     def validate_artist_name(self,artist_name):
-        exists = bool(Artists.query.filter_by(name = form.artist_name.data).first())
+        exists = bool(Artists.query.filter_by(name = artist_name).first())
         if not exists:
             raise ValidationError("Artist Does Not exist yet so you cant add a genre")
     
@@ -80,7 +80,7 @@ class DeleteASong(FlaskForm):
     submit = SubmitField ("Delete this song")
 
     def validate_title_name(self,song_name):
-        exists = bool(Tracks.query.filter_by(title = form.song_title.data).first())
+        exists = bool(Tracks.query.filter_by(title = song_title).first())
         if not exists:
             raise ValidationError("Song doesn't exist")
 
