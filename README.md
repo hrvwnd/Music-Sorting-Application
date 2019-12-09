@@ -12,7 +12,10 @@ My project is to create an application that sorts music based on genre into sepe
 The database consists of 3 tables: Artists, Genre and Tracks
 
 entity relation diagram ![erd](https://i.imgur.com/WbnMfMt.png)
+Final Trello ![trello](https://i.imgur.com/WyfAkdi.png)
 
 Use Case Scenario ![UCS](https://i.imgur.com/ywFRDHf.jpg
+
+Risk Assessment ![RA](https://i.imgur.com/VtXl95d.png)
 
 CI Pipeline ![CIP] (https://i.imgur.com/WeTSift.png)
