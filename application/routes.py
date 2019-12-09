@@ -91,6 +91,7 @@ def delete():
     form = DeleteASong()
     if form.validate_on_submit():
         Tracks.query.filter_by(title = form.song_title.data).delete()
-        return redirect(url_for('sort'))
+        flash (str(form.song_title.data) + "Song Deleted")
+        return redirect(url_for('delete'))
     return render_template("delete.html",title="Delete a song", form=form)
 
