@@ -14,8 +14,8 @@ The database consists of 3 tables: Artists, Genre and Tracks
 entity relation diagram ![erd](https://i.imgur.com/WbnMfMt.png)
 Final Trello ![trello](https://i.imgur.com/WyfAkdi.png)
 
-Use Case Scenario ![UCS](https://i.imgur.com/ywFRDHf.jpg
+Use Case Scenario ![UCS](https://i.imgur.com/ywFRDHf.jpg)
 
 Risk Assessment ![RA](https://i.imgur.com/VtXl95d.png)
 
-CI Pipeline ![CIP] (https://i.imgur.com/WeTSift.png)
+CI Pipeline ![CIP](https://i.imgur.com/WeTSift.png)
