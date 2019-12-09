@@ -79,7 +79,7 @@ class DeleteASong(FlaskForm):
     )
     submit = SubmitField ("Delete this song")
 
-    def validate_title_name(self,song_name):
+    def validate_title_name(self,song_title):
         exists = bool(Tracks.query.filter_by(title = song_title).first())
         if not exists:
             raise ValidationError("Song doesn't exist")
