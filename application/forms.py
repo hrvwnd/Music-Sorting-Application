@@ -61,7 +61,7 @@ class UpdateArtistsForm(FlaskForm): #
     new_default_genre = StringField("Genre for artist",
     validators = [
         DataRequired(),
-        Length(min = 3, max = 99)
+        Length(min = 3, max = 20)
     ])
     submit = SubmitField ("Change default genre")
 
