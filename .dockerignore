@@ -1,0 +1,6 @@
+*.txt
+*.md
+!requirements.txt
+!README.md
+music
+
