@@ -7,7 +7,7 @@ from application.forms import DirectoryForm, GenreForm, SortForm, UpdateArtistsF
 from flask_login import login_user,current_user, logout_user, login_required
 from application.py.file_interactions import create_single_folder, identify_mp3_lx, \
     mp3_id3_read, folder_identify_lx, double_backslash_lx, strip_eyed3,move_files_lx 
-
+import os 
 
 """  ~~~PROJECT ROUTES~~~   """
 @app.route("/")
@@ -15,6 +15,7 @@ from application.py.file_interactions import create_single_folder, identify_mp3_
 def sort():
     #directory = "/home/harveyawendon/harvey/music" #testing store (only works on hosted vm)
     directory = "/opt/flask-app/music"
+    directory = os.path.dirname(__file__+"/music")) # root file path
     mp3s = identify_mp3_lx(directory)
     form = SortForm()
     print (str(mp3s))
