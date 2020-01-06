@@ -15,7 +15,7 @@ import os
 def sort():
     #directory = "/home/harveyawendon/harvey/music" #testing store (only works on hosted vm)
     directory = "/opt/flask-app/music"
-    directory = os.path.dirname(__file__+"/music")) # root file path
+    directory = os.path.dirname(__file__+"/music") # root file path
     mp3s = identify_mp3_lx(directory)
     form = SortForm()
     print (str(mp3s))
