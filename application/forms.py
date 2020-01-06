@@ -22,7 +22,7 @@ class DirectoryForm(FlaskForm): #user enters directory path
         if in_use:
             raise ValidationError("Directory already exists")
         if in_use == False:
-            folder_check_lx(directory_path,"")
+            folder_check_lx(directory_path)
             #change me <-- add make a directory function
 
 class GenreForm(FlaskForm): #allows user to enter genre name
