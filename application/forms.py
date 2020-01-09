@@ -1,124 +1,11 @@
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, EqualTo,ValidationError
-from application.models import Users
-from application.__init__ import LoginManager
-from flask_login import LoginManager, current_user
-
 """project imports"""
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo,ValidationError
 from application.models import Tracks, Artists, Genres
-from application.py.file_interactions import identify_mp3, double_backslash_lx,folder_identify_lx, folder_check, move_files
+from application.py.file_interactions import double_backslash_lx,folder_identify_lx, folder_check_lx
 from application.__init__ import LoginManager
 from flask_login import LoginManager, current_user
-
-
-class PostForm(FlaskForm):
-    title = StringField('Title',
-            validators = [
-                DataRequired(),
-                Length(min=4, max=100)
-            ]
-    )
-
-    content = StringField('Content',
-            validators = [
-                DataRequired(),
-                Length(min=4, max=100)
-            ]
-    )
-
-    submit = SubmitField('  Post Content  ')
-
-
-class RegistrationForm(FlaskForm):
-    first_name = StringField('First Name',
-            validators = [
-                DataRequired(),
-                Length(min=4, max=30)
-            ]
-    )
-
-    last_name = StringField('Last Name',
-            validators = [
-                DataRequired(),
-                Length(min=4, max=30)
-            ]
-    )
-
-    email = StringField('Email:        ',
-    validators=[
-        DataRequired(),
-        Email()
-        ]
-        )
-    password = PasswordField('Password:     ',
-    validators=[
-        DataRequired()
-        ]
-        )
-    confirm_password = PasswordField('Confirm Password',
-    validators=[
-        DataRequired(),
-        EqualTo('password')
-        ]
-        )
-    submit = SubmitField('  Sign Up  ')
-
-    def validate_email(self,email):
-        user = Users.query.filter_by(email=email.data).first()
-        if user:
-            raise ValidationError('Email is already in use!')
-
-class LoginForm(FlaskForm):
-    email = StringField('Email',
-    validators = [
-        DataRequired(),
-        Email()
-        ]
-        )
-
-    password = PasswordField('Password',
-    validators = [
-        DataRequired()
-    ]
-    )
-    remember = BooleanField('Remember Me')
-    submit = SubmitField('Login')
-
-class UpdateAccountForm(FlaskForm):
-    first_name = StringField('First Name',
-            validators = [
-                DataRequired(),
-                Length(min=2, max=30)
-            ]
-    )
-
-    last_name = StringField('Last Name',
-            validators = [
-                DataRequired(),
-                Length(min=2, max=30)
-            ]
-    )
-
-    email = StringField('Email:        ',
-    validators=[
-        DataRequired(),
-        Email()
-        ]
-        )
-
-    submit = SubmitField('  Update  ')
-
-
-    def validate_email(self,email):
-        if email.data != current_user.email:
-            user = Users.query.filter_by(email=email.data).first()
-            if user:
-                raise ValidationError("Email already in use, please try another")
-
 
 """  Project forms   """
 class DirectoryForm(FlaskForm): #user enters directory path
@@ -135,7 +22,7 @@ class DirectoryForm(FlaskForm): #user enters directory path
         if in_use:
             raise ValidationError("Directory already exists")
         if in_use == False:
-            folder_check_lx(directory_path,"")
+            folder_check_lx(directory_path)
             #change me <-- add make a directory function
 
 class GenreForm(FlaskForm): #allows user to enter genre name
@@ -145,7 +32,10 @@ class GenreForm(FlaskForm): #allows user to enter genre name
         Length(min=2, max = 20)
             ]
         )
-    folder_path = StringField("Folder Path: ", default="/home/harveyawendon/harvey/music")
+    folder_path = StringField("Folder Path: ", default="/opt/flask-app/music/") 
+    # directory requires changing for hosting on gunicorn and jenkins
+    # /home/harveyawendon/harvey/music
+    # /opt/flask-app
     submit = SubmitField('Add Genre') #button to submit data
     
     def validate_genre_name(self,genre_name):
@@ -171,13 +61,13 @@ class UpdateArtistsForm(FlaskForm): #
     new_default_genre = StringField("Genre for artist",
     validators = [
         DataRequired(),
-        Length(min = 3, max = 99)
+        Length(min = 3, max = 20)
     ])
     submit = SubmitField ("Change default genre")
-
+    
     def validate_artist_name(self,artist_name):
-        exists = Artists.query.filter_by(name = artist_name).first()
-        if exists==False:
+        exists = bool(Artists.query.filter_by(name = artist_name.data).first())
+        if not exists:
             raise ValidationError("Artist Does Not exist yet so you cant add a genre")
     
 class DeleteASong(FlaskForm):
@@ -189,9 +79,9 @@ class DeleteASong(FlaskForm):
     )
     submit = SubmitField ("Delete this song")
 
-    def validate_title_name(self,song_name):
-        exists = Tracks.query.filter_by(title = song_title).first
-        if exists == False:
+    def validate_title_name(self,song_title):
+        exists = bool(Tracks.query.filter_by(title = song_title.data).first())
+        if not exists:
             raise ValidationError("Song doesn't exist")
 
 

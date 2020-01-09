@@ -18,22 +18,19 @@
             {{ form.artist_name }}
             {% endif %}
         </div>
-    </form>
-    <form method="POST" action="">
-            {{ form.hidden_tag() }}
-            <div class="form-group">
-                {{ form.new_default_genre.label }}
-                {% if form.new_default_genre.errors %}
-                {{ form.new_default_genre }}
-                <div class="error">
-                    {% for error in form.new_default_genre.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% else %}
-                {{ form.new_default_genre }}
-                {% endif %}
+        <div class="form-group">
+            {{ form.new_default_genre.label }}
+            {% if form.new_default_genre.errors %}
+            {{ form.new_default_genre }}
+            <div class="error">
+                {% for error in form.new_default_genre.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
             </div>
+            {% else %}
+            {{ form.new_default_genre }}
+            {% endif %}
+        </div>
         <div class= "form-group">
             {{ form.submit }}
         </div>
