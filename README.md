@@ -1,6 +1,5 @@
-is jenkins working?
 # project_music_sort-
-
+The first project I undertook as part of my training with QA Consulting. 
 Index3
 
 ## Brief
